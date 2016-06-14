@@ -210,8 +210,15 @@ public interface Function<T,R>{
 }
 ```
 
-
-
+* Flatmapping operation
+**Stream<Stream<R>> flatMap()**
+** Signature
+```java
+<R> Stream<R> flatMap(Function<T, Stream<R>> flatMapper);
+<R> Stream<R> map(Function<T, R> mapper);
+```
+** If the flatMap was a regular map, it would return a Stream<Stream<R>>, thus a stream of streams. But it is a flatMap,
+so the stream of streams is flattened, and becomes a stream.
 
 
 
