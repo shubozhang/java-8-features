@@ -1,12 +1,13 @@
 # java-8-features
 
 ###Module-01
-Lambda expression: 
+1. Lambda expression: 
 * To make instances of anonymous classes easier to write and read.
 * Another way to write anonymous classes
 * What is the type of a lambda expression? It is a functional interface which has only one abstract method.
-Functional interface examples:
+
 ```java
+//Functional interface examples:
 public interface Runnable{ run(); };
 
 public interface Comparator<T>{ int compare(T t1, T, t2); };
