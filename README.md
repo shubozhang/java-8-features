@@ -3,6 +3,12 @@
 Module-01
 Lambda expression
 
+'''java
+public interface FileFilter{
+    boolean accept(File file);
+}
+'''
+
 The lambda syntax
 
 Functional interfaces
