@@ -25,7 +25,7 @@ Note: methods from Object class don't count.
 ```java
 new package: java.util.function // with a rich set of functional interfaces
 
-4 categories:
+//4 categories:
 public interface Supplier<T>{ T get(); };
 
 public interface Consumer<T> { void accept(T t); };
