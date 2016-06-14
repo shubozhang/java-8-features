@@ -1,6 +1,6 @@
 *.class
 .idea
-java-8-features.iml
+*.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

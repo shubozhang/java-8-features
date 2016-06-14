@@ -17,10 +17,15 @@ public class Lambda03 {
 
     static Comparator<String> comparatorLambda = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
 
+    // Most of the time, parameter types can be omitted
+    static Comparator<String> comparatorLambda1 = (s1, s2) -> Integer.compare(s1.length(), s2.length());
+
     public static void main(String[] args) {
         runComparator(comparator);
 
         runComparator(comparatorLambda);
+
+        runComparator(comparatorLambda1);
 
     }
 
