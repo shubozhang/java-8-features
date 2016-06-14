@@ -22,6 +22,18 @@ Note: methods from Object class don't count.
 * Is a lambda expression an object? No. A lambda expression is created without using new key word. Exact answer: a lambda is an object without an identity. A lambda expression should not be used as a regular object.
 
 ####2. Functional interfaces toolbox
+```java
+new package: java.util.function // with a rich set of functional interfaces
+
+4 categories:
+public interface Supplier<T>{ T get(); };
+
+public interface Consumer<T> { void accept(T t); };
+
+public interface BiConsumer<T, U>{ void accept(T t, U u); };
+
+public interface Predicate<T> { boolean test(T t);};
+```
 
 Method references
 
