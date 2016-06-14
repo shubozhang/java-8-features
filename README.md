@@ -1,46 +1,24 @@
 # java-8-features
 
-Module-01
+###Module-01
 Lambda expression: 
 * To make instances of anonymous classes easier to write and read.
 * Another way to write anonymous classes
-
+* What is the type of a lambda expression? It is a functional interface which has only one abstract method.
+Functional interface examples:
 ```java
-public interface FileFilter{
-    boolean accept(File file);
-}
+public interface Runnable{ run(); };
 
-public class JavaFileFilter implements FileFilter{
-    public boolean accept(File file) {
-        return file.getName().endsWith(".java");
-    }
-}
+public interface Comparator<T>{ int compare(T t1, T, t2); };
 
-// use it
-
-JavaFileFilter fileFilter = new JavaFileFilter();
-File dir = new File("d:/tmp");
-File[] javaFiles = dir.listFiles(fileFilter)
+public interface FileFilter{ boolean accept(File pathname); };
 ```
+Note: methods from Object class don't count.
 
-```java
-//Use an anonymous class
-FileFilter fileFilter = new FileFilter() {
-    @Override
-    public boolean accept(File file) {
-        return file.getName().endsWith(".java");
-    }
-};
+* Can a lambda be put in a variable?
+* Is a lambda expression an object?
 
-File dir = new File("d:/tmp");
-File[] javaFiles = dir.listFiles(fileFilter)
-```
 
-```java
-// Lambda expression
-
-FileFilter filter = (File file) -> file.getName().endsWith(".java");
-```
 
 The lambda syntax
 
