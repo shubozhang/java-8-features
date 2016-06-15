@@ -93,7 +93,7 @@ Predicate<String> id = Predicate.isEqual(target);
 
 #### 1.Map /Filter /Reduce
 * Mapping
-** The mapping stemp takes a List<Person> and returns a List<Integer>.
+** The mapping step takes a List<Person> and returns a List<Integer>.
 ** The size of both lists is the same.
 
 * Filtering
@@ -101,7 +101,7 @@ Predicate<String> id = Predicate.isEqual(target);
 ** But there some elements have been filtered out in the process.
 
 * Reduce
-** This is the reduc tion step, equivalent to the SQL aggregation.
+** This is the reduction step, equivalent to the SQL aggregation.
 
 #### 2. What is a Stream? It is a new concept, and not collection.
 * Technical answer: a typed interface 
@@ -118,7 +118,7 @@ public interface Stream<T> extends BaseStream<T, Stream<T>>{}
 It gives ways to efficiently process large amounts of data... and also smaller ones.
 
 * How efficient?
-** In paralle, to leverage the computing power of multicore CPUs.
+** In parallel, to leverage the computing power of multi-core CPUs.
 ** Pipelined, to avoid unnecessary intermediary computations.
 
 * Why can't a Collection be a Stream?
@@ -190,13 +190,6 @@ List<Person> persons;
 persons.stream().peek(System.out::println).filter(person -> person.getAge() > 20).peek(result::add);
 ```
 
-* Summary
-** The Stream API defines intermediary operations
-** 3 operations:
-**void forEach(Consumer)**: not lazy
-**Stream peek(Consumer)**: lazy
-**Stream filter(Predicate)**:lazy
-
 * Map Operation
 **Stream map(Function)**: lazy
 ```java
@@ -221,8 +214,57 @@ public interface Function<T,R>{
 so the stream of streams is flattened, and becomes a stream.
 
 
+* Summary
+** The Stream API defines intermediary operations
+** 3 operations:
+**void forEach(Consumer)**: not lazy
+**Stream peek(Consumer)**: lazy
+**Stream filter(Predicate)**:lazy
+**map() and flatMap()**
 
 
+
+
+* Reduction
+**What about the reduction step?
+
+**Two kinds of reduction in the Stream API
+```java
+// First: aggregation = min, max, sum, etc...
+List<Integer> ages
+Stream<Integer> stream = ages.stream();
+Integer sum = stream.reduce(0, (age1, age2) -> age1 + age2);
+
+// 1st arg: identity element of the reduction operation
+// 2nd arg: reduction operation, of type BinaryOperator<T>
+
+public interface BiFunction<T,U,R>{
+    R apply(T t, U u);
+}
+
+public interface BinaryOperator<T> extends BiFunction<T, T, T>{
+    T apply(T t1, T t2);
+}
+```
+
+*Identity Element
+** The bifunction takes two arguments, so what happens if the Stream is empty? And what happens if the Stream has only one element? 
+
+The reduction of an empty Stream is the identity element
+
+If the Stream has only one element, then the reduction is that element.
+```java
+// Aggregations example
+Stream<Integer> stream;
+BinaryOperation<Integer> sum = (i1, i2) -> i1 + i2;
+Integer id = 0;
+
+int red = stream.reduce(id,sum);
+
+Stream<Integer> stream = Stream.empty();
+int red = stream.reduce(id, sum);
+System.out.println(red);
+```
 
 
 
