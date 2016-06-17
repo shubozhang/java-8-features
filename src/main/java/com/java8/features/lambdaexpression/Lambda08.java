@@ -20,12 +20,12 @@ public class Lambda08 {
 
         System.out.println(list);
 
-        Function<List<?>,Integer> size = List::size;
+        Function<List<?>,Integer> mapper = List::size;
         Function<List<Integer>, Stream<Integer>> flatMapper = l -> l.stream();
 
         list.stream().map(l -> l.size()).forEach(System.out::println);
 
-        list.stream().map(size).forEach(System.out::println);
+        list.stream().map(mapper).forEach(System.out::println);
 
 
         list.stream().map(flatMapper).forEach(System.out::println);

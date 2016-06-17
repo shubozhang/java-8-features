@@ -104,7 +104,7 @@ Predicate<String> id = Predicate.isEqual(target);
 ** This is the reduction step, equivalent to the SQL aggregation.
 
 #### 2. What is a Stream? It is a new concept, and not collection.
-* Technical answer: a typed interface 
+2.1* Technical answer: a typed interface 
 ** An object on which one can define operations
 ** An object that does not hold any data
 ** An object that should not change the data it processes (multicore, visibility issue, atomic, volatile) // this is just a rule, not forced by compliler.
@@ -114,14 +114,14 @@ Predicate<String> id = Predicate.isEqual(target);
 public interface Stream<T> extends BaseStream<T, Stream<T>>{}
 ```
 
-* What does it do?
+2.2* What does it do?
 It gives ways to efficiently process large amounts of data... and also smaller ones.
 
-* How efficient?
+2.3* How efficient?
 ** In parallel, to leverage the computing power of multi-core CPUs.
 ** Pipelined, to avoid unnecessary intermediary computations.
 
-* Why can't a Collection be a Stream?
+2.4* Why can't a Collection be a Stream?
 Because Stream is a new concept, and we don't want to change the way the Collection API works.
 
 * Build a Stream (many patterns)
@@ -267,9 +267,18 @@ System.out.println(red);
 ```
 
 
+Reductions:
+
+Available reductions: max(), min(), count()
+
+Boolean reductions: allMatch(), noneMatch(), anyMatch()
+
+Reductions that return an optional: findFirst(), findAny();
 
 
+Reductions are terminal operations
 
+They trigger the processing of the data
 
 
 
