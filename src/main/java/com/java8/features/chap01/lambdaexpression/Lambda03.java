@@ -1,4 +1,4 @@
-package com.java8.features.lambdaexpression;
+package com.java8.features.chap01.lambdaexpression;
 
 import java.util.Arrays;
 import java.util.Collections;

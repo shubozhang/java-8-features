@@ -282,6 +282,26 @@ They trigger the processing of the data
 
 
 
+Summary:
+
+Reduction seen as an aggregation
+
+Intermediary /terminal operation
+
+Optional: needed because default values can't be always defined.
+
+
+
+Collectors
+*Another type of reduction: mutable reduction
+*Instead of aggregating elements, this reduction put them in a container.
+
+
+
+
+So what is a Stream
+
+
 
 
 

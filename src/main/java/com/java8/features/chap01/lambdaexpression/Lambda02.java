@@ -1,4 +1,4 @@
-package com.java8.features.lambdaexpression;
+package com.java8.features.chap01.lambdaexpression;
 
 public class Lambda02 {
 

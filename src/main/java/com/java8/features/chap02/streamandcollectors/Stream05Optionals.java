@@ -1,4 +1,4 @@
-package com.java8.features.lambdaexpression;
+package com.java8.features.chap02.streamandcollectors;
 
 import java.util.Optional;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
  *
  * Best practices: only use optional as a return type.
  */
-public class Lambda10Optionals {
+public class Stream05Optionals {
 
 
     public static void main(String[] args) {

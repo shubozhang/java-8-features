@@ -1,4 +1,4 @@
-package com.java8.features.lambdaexpression;
+package com.java8.features.chap02.streamandcollectors;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 /**
  * Stream
  */
-public class Lambda06 {
+public class Stream01 {
 
     public static void main(String[] args) {
         Predicate<String> p1 = Predicate.isEqual("two");

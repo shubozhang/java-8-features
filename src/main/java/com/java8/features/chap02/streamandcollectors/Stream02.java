@@ -1,4 +1,4 @@
-package com.java8.features.lambdaexpression;
+package com.java8.features.chap02.streamandcollectors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  *
  * Only final operation will trigger the implementation.
  */
-public class Lambda07 {
+public class Stream02 {
 
     public static void main(String[] args) {
         Predicate<String> p1 = Predicate.isEqual("two");

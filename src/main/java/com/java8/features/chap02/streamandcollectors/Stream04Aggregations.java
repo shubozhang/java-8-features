@@ -1,4 +1,4 @@
-package com.java8.features.lambdaexpression;
+package com.java8.features.chap02.streamandcollectors;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 /**
  * Created by shubo.zhang on 6/17/2016.
  */
-public class Lambda09Aggregations {
+public class Stream04Aggregations {
 
     public static void main(String[] args) {
 

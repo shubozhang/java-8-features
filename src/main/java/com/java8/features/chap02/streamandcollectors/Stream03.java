@@ -1,4 +1,4 @@
-package com.java8.features.lambdaexpression;
+package com.java8.features.chap02.streamandcollectors;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 /**
  * Map and FlatMap operations
  */
-public class Lambda08 {
+public class Stream03 {
 
     public static void main(String[] args) {
         List<Integer> list1 = Arrays.asList(1,2,3,4,5,6,7);
