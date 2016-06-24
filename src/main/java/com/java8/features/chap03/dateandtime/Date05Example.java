@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Date00 {
+public class Date05Example {
 
     public static void main(String[] args) {
 
@@ -21,7 +21,7 @@ public class Date00 {
 
         try (
                 BufferedReader reader =
-                        new BufferedReader(new InputStreamReader(Date00.class.getResourceAsStream("/DateOfBirth.txt")));
+                        new BufferedReader(new InputStreamReader(Date05Example.class.getResourceAsStream("/DateOfBirth.txt")));
                 Stream<String> stream = reader.lines();
         ) {
 
@@ -42,7 +42,7 @@ public class Date00 {
             System.out.println(ioe);
         }
 
-        LocalDate now = LocalDate.of(2014, Month.MARCH, 12);
+        LocalDate now = LocalDate.of(2016, Month.MARCH, 12);
 
         persons.stream().forEach(
                 p -> {

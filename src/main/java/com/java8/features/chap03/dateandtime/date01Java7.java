@@ -17,9 +17,9 @@ public class Date01Java7 {
     private static void demo1() {
         Customer customer = new Customer();
         Date date = customer.getCreatedDate();
-        System.out.println(date.getTime());
+        System.out.println("Original date: " + date);
         date.setTime(0L); // this is dangerous
-        System.out.println(date.getTime());
+        System.out.println("Modifed date: " + customer.getCreatedDate());
     }
 
 
@@ -29,7 +29,9 @@ public class Date01Java7 {
     private static void demo2() {
         Customer1 customer1 = new Customer1();
         Date date = customer1.getCreatedDate();
-        System.out.println(date);
+        System.out.println("Original date: " + date);
+        date.setTime(0L); // this is dangerous
+        System.out.println("Modifed date: " + customer1.getCreatedDate());
 
     }
 }
