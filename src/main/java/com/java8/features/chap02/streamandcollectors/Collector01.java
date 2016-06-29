@@ -44,7 +44,7 @@ public class Collector01 {
                 .map(Person::getName)
                 .collect(Collectors.toList());
 
-        System.out.println(result.toString());
+        System.out.println("demo2: " + result.toString());
     }
 
     private static void demo3(List<Person> persons) {

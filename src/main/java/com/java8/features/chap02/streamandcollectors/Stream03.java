@@ -28,8 +28,8 @@ public class Stream03 {
         list.stream().map(mapper).forEach(System.out::println);
 
 
-        list.stream().map(flatMapper).forEach(System.out::println);
+        //list.stream().map(flatMapper).forEach(System.out::println);
 
-        list.stream().flatMap(flatMapper).forEach(System.out::println);
+        //list.stream().flatMap(flatMapper).forEach(System.out::println);
     }
 }
