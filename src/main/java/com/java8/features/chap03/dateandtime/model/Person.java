@@ -8,10 +8,7 @@ package com.java8.features.chap03.dateandtime.model;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author José
- */
+
 public class Person {
     
     private String name;
