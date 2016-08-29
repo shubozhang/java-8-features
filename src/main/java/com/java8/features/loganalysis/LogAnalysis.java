@@ -41,6 +41,7 @@ public class LogAnalysis {
         return Collections.unmodifiableMap(monthMap);
     }
 
+
     public static void main(String[] args) {
         Instant start = Instant.now();
 

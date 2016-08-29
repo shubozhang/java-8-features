@@ -29,5 +29,6 @@ public class Date03Duration {
         Duration duration = Duration.between(start,end);
 
         System.out.println("Time elapsed: " + duration.toMillis() + " ms");
+        System.out.println(Instant.now());
     }
 }

@@ -1,7 +1,7 @@
 # java-8-features
 
 ###Module-01
-####1. Lambda expression: 
+#### 1.1 Lambda expression: 
 * To make instances of anonymous classes easier to write and read.
 * Another way to write anonymous classes
 * What is the type of a lambda expression? It is a functional interface which has only one abstract method.
@@ -16,12 +16,14 @@ public interface FileFilter{ boolean accept(File pathname); };
 ```
 Note: methods from Object class don't count.
 
-* @FunctionalInterface annotation is optional. Compile can tell that whether the interface is functional or not.
+* @Functional Interface annotation is optional. Compile can tell that whether the interface is functional or not.
 
-* Can a lambda be put in a variable? Yes. The consequences are a lambda can be taken as a method parameter, and can be returned by a method.
-* Is a lambda expression an object? No. A lambda expression is created without using new key word. Exact answer: a lambda is an object without an identity. A lambda expression should not be used as a regular object.
+* Can a lambda be put in a variable? Yes. The consequences are a lambda can be taken as a method parameter, 
+  and can be returned by a method.
+* Is a lambda expression an object? No. A lambda expression is created without using new key word. 
+  Exact answer: a lambda is an object without an identity. A lambda expression should not be used as a regular object.
 
-####2. Functional interfaces toolbox
+#### 1.2. Functional interfaces toolbox
 ```java
 new package: java.util.function // with a rich set of functional interfaces
 
@@ -40,7 +42,7 @@ public interface UnaryOperator<T> extends Function<T,T>{}
 public interface BinaryOperator<T> extends BiFunction<T,T,T>{}
 ```
 
-#### 3. Method references
+#### 1.3 Method references
 
 ```java
 "::" can be used to refer both non-static and static methods
@@ -53,18 +55,19 @@ Comparator<Integer> c = (i1, i2) -> Integer.compare(i1,i2);
 Comparator<Integer> c = Integer::compare;
 ```
 
-#### 4.Process data in Java
+#### 1.4 Process data in Java
 * Where are out objects? Most of the time in a Collection(or maybe a List, a Set or a Map)
 
 * Process data with lambdas
+
 ```java
 List<Customer> list
-
 list.forEach(customer -> System.out.println(customer));
 or 
 list.forEach(System.out::println);
 
-// default key word is a new concept in java 8. It allows to change the old interfaces without breaking the existing implementations.
+// default key word is a new concept in java 8. 
+// It allows to change the old interfaces without breaking the existing implementations.
 // It also allows new patterns.
 // Static methods are also allowed in java 8 interfaces.
 public interface Iterable<E> {
@@ -77,6 +80,7 @@ public interface Iterable<E> {
 ```
 
 * Examples of new patterns
+
 ```java
 Predicate<String> p1 = s -> s.length() < 20;
 Predicate<String> p2 = s -> s.length() > 10;
@@ -84,14 +88,14 @@ Predicate<String> p2 = s -> s.length() > 10;
 Predicate<String> id = Predicate.isEqual(target);
 ```
 
-### Module-02 Streams and Collectors
+### Module02 Streams and Collectors
 * Map / filter /reduce
 * what is a Stream?
 * Patterns to build a Stream
 * Operations on a Stream
 
 
-#### 1.Map /Filter /Reduce
+#### 2.1.Map /Filter /Reduce
 * Mapping
 ** The mapping step takes a List<Person> and returns a List<Integer>.
 ** The size of both lists is the same.
@@ -103,13 +107,15 @@ Predicate<String> id = Predicate.isEqual(target);
 * Reduce
 ** This is the reduction step, equivalent to the SQL aggregation.
 
-#### 2. What is a Stream? It is a new concept, and not collection.
-2.1* Technical answer: a typed interface 
+#### 2.2 What is a Stream? It is a new concept, and not collection.
+2.2.1* Technical answer: a typed interface 
 ** An object on which one can define operations
 ** An object that does not hold any data
-** An object that should not change the data it processes (multicore, visibility issue, atomic, volatile) // this is just a rule, not forced by compliler.
+// this is just a rule, not forced by compliler.
+** An object that should not change the data it processes (multicore, visibility issue, atomic, volatile) 
 ** An object able to process data in one pass
 ** An object optimized from the algorithm point of view, and able to process data in parallel.
+
 ```java
 public interface Stream<T> extends BaseStream<T, Stream<T>>{}
 ```
@@ -126,7 +132,8 @@ Because Stream is a new concept, and we don't want to change the way the Collect
 
 * Build a Stream (many patterns)
 ** forEach operation: return type is void
-** Chain consumer is the only way to have serveral consumers on a single stream, because forEach method does not return anything.
+** Chain consumer is the only way to have several consumers on a single stream, because forEach method does not return anything.
+
 ```java
 List<Person> persons;
 Stream<Person> stream = persons.stream();
@@ -141,6 +148,7 @@ stream.forEach(c2);
 
 ** Filter operation: return type is Stream
 ** Warning: method calls do not handle priorities
+
 ```java
 List<Person> persons;
 Stream<Person> stream = persons.stream();
@@ -171,17 +179,22 @@ Stream<String> stream1 = Stream.of("one", "two", "three");
 Stream<String> stream2 = stream1.filter(p6)
 stream2.forEach(System.out::println);
 ```
+
 * what do I have in this new Stream?
 ** ~~the filtered data~~
 ** Right answer: nothing, since a Stream does not hold any data
+
 ```java
 // this code does nothing but a declaration, no data is processed. 
 List<Person> persons;
 Stream<Person> stream = persons.stream();
 Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
 ```
+
 ** The call to the filter method is lazy. forEach method is not lazy.
-** All the methods of Stream that return another Stream are lazy. An operation on a Stream that returns a Stream is called an intermediary operation.
+** All the methods of Stream that return another Stream are lazy. 
+   An operation on a Stream that returns a Stream is called an intermediary operation.
+
 ```java
 // this code also does nothing, print nothing, and result is empty
 List<String> result = new ArrayList<>;
@@ -192,6 +205,7 @@ persons.stream().peek(System.out::println).filter(person -> person.getAge() > 20
 
 * Map Operation
 **Stream map(Function)**: lazy
+
 ```java
 public interface Function<T,R>{
     R apply(T t);
@@ -206,12 +220,14 @@ public interface Function<T,R>{
 * Flatmapping operation
 **Stream<Stream<R>> flatMap()**
 ** Signature
+
 ```java
 <R> Stream<R> flatMap(Function<T, Stream<R>> flatMapper);
 <R> Stream<R> map(Function<T, R> mapper);
 ```
+
 ** If the flatMap was a regular map, it would return a Stream<Stream<R>>, thus a stream of streams. But it is a flatMap,
-so the stream of streams is flattened, and becomes a stream.
+   so the stream of streams is flattened, and becomes a stream.
 
 
 * Summary
@@ -220,15 +236,15 @@ so the stream of streams is flattened, and becomes a stream.
 **void forEach(Consumer)**: not lazy
 **Stream peek(Consumer)**: lazy
 **Stream filter(Predicate)**:lazy
-**map() and flatMap()**
+**map() and flatMap()**: lazy
 
 
 
 
 * Reduction
 **What about the reduction step?
-
 **Two kinds of reduction in the Stream API
+
 ```java
 // First: aggregation = min, max, sum, etc...
 List<Integer> ages
@@ -248,11 +264,13 @@ public interface BinaryOperator<T> extends BiFunction<T, T, T>{
 ```
 
 *Identity Element
-** The bifunction takes two arguments, so what happens if the Stream is empty? And what happens if the Stream has only one element? 
+** The bifunction takes two arguments, so what happens if the Stream is empty? 
+And what happens if the Stream has only one element? 
 
 The reduction of an empty Stream is the identity element
 
 If the Stream has only one element, then the reduction is that element.
+
 ```java
 // Aggregations example
 Stream<Integer> stream;
@@ -267,16 +285,11 @@ System.out.println(red);
 ```
 
 
-Reductions:
+Reductions: are terminal operations
 
 Available reductions: max(), min(), count()
-
 Boolean reductions: allMatch(), noneMatch(), anyMatch()
-
 Reductions that return an optional: findFirst(), findAny();
-
-
-Reductions are terminal operations
 
 They trigger the processing of the data
 
@@ -286,7 +299,7 @@ Summary:
 
 Reduction seen as an aggregation
 
-Intermediary /terminal operation
+Intermediary / terminal operation
 
 Optional: needed because default values can't be always defined.
 
@@ -296,10 +309,6 @@ Collectors
 *Another type of reduction: mutable reduction
 *Instead of aggregating elements, this reduction put them in a container.
 
-
-
-
-So what is a Stream
 
 
 
