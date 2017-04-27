@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.java8.features</groupId>
-  <artifactId>java8-features</artifactId>
+  <artifactId>java-8-features</artifactId>
   <version>1.0-SNAPSHOT</version>
   <build>
     <plugins>
@@ -19,7 +19,7 @@
   </build>
   <packaging>jar</packaging>
 
-  <name>java8-features\</name>
+  <name>java-8-features\</name>
   <url>http://maven.apache.org</url>
 
   <properties>

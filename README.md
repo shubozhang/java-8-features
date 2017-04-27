@@ -124,8 +124,8 @@ public interface Stream<T> extends BaseStream<T, Stream<T>>{}
 It gives ways to efficiently process large amounts of data... and also smaller ones.
 
 2.3 How efficient?
-    * In parallel, to leverage the computing power of multi-core CPUs.
-    * Pipelined, to avoid unnecessary intermediary computations.
+       * In parallel, to leverage the computing power of multi-core CPUs.
+       * Pipelined, to avoid unnecessary intermediary computations.
 
 2.4 Why can't a Collection be a Stream?
 Because Stream is a new concept, and we don't want to change the way the Collection API works.
@@ -265,8 +265,8 @@ result of flatMap = result of map + flatten
 
 
 * Reduction
-**What about the reduction step?
-**Two kinds of reduction in the Stream API
+    * What about the reduction step?
+    * Two kinds of reduction in the Stream API
 
 ```java
 // First: aggregation = min, max, sum, etc...
@@ -286,9 +286,8 @@ public interface BinaryOperator<T> extends BiFunction<T, T, T>{
 }
 ```
 
-*Identity Element
-** The bifunction takes two arguments, so what happens if the Stream is empty? 
-And what happens if the Stream has only one element? 
+* Identity Element
+    * The bifunction takes two arguments, so what happens if the Stream is empty? And what happens if the Stream has only one element? 
 
 The reduction of an empty Stream is the identity element
 
@@ -308,29 +307,28 @@ System.out.println(red);
 ```
 
 
-Reductions: are terminal operations
-
-Available reductions: max(), min(), count()
-Boolean reductions: allMatch(), noneMatch(), anyMatch()
-Reductions that return an optional: findFirst(), findAny();
+* Reductions: are terminal operations
+    * Available reductions: max(), min(), count()
+    * Boolean reductions: allMatch(), noneMatch(), anyMatch()
+    * Reductions that return an optional: findFirst(), findAny();
 
 They trigger the processing of the data
 
 
 
-Summary:
+* Summary:
 
-Reduction seen as an aggregation
+    * Reduction seen as an aggregation
 
-Intermediary / terminal operation
+    * Intermediary / terminal operation
 
-Optional: needed because default values can't be always defined.
+    * Optional: needed because default values can't be always defined.
 
 
 
-Collectors
-*Another type of reduction: mutable reduction
-*Instead of aggregating elements, this reduction put them in a container.
+* Collectors
+    * Another type of reduction: mutable reduction
+    * Instead of aggregating elements, this reduction put them in a container.
 
 
 
