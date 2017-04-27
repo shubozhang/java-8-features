@@ -18,7 +18,6 @@ public class Lambda02 {
     };
     public static void main(String[] args) throws InterruptedException {
 
-
         runThread(runnable);
 
         runThread(runnableLambda);
