@@ -1,4 +1,4 @@
-# java-8-features
+# Java-8-features
 
 ###Module-01
 #### 1.1 Lambda expression: 
@@ -16,7 +16,7 @@ public interface FileFilter{ boolean accept(File pathname); };
 ```
 Note: methods from Object class don't count.
 
-* @Functional Interface annotation is optional. Compile can tell that whether the interface is functional or not.
+* @Functional Interface annotation is optional. Compiler can tell that whether the interface is functional or not.
 
 * Can a lambda be put in a variable? Yes. The consequences are a lambda can be taken as a method parameter, 
   and can be returned by a method.
@@ -97,42 +97,42 @@ Predicate<String> id = Predicate.isEqual(target);
 
 #### 2.1.Map /Filter /Reduce
 * Mapping
-** The mapping step takes a List<Person> and returns a List<Integer>.
-** The size of both lists is the same.
+    * The mapping step takes a List<Person> and returns a List<Integer>.
+    * The size of both lists is the same.
 
 * Filtering
-** The filtering step takes a List<Integer> and return a List<Integer>.
-** But there some elements have been filtered out in the process.
+    * The filtering step takes a List<Integer> and return a List<Integer>.
+    * But there some elements have been filtered out in the process.
 
 * Reduce
-** This is the reduction step, equivalent to the SQL aggregation.
+    * This is the reduction step, equivalent to the SQL aggregation.
 
 #### 2.2 What is a Stream? It is a new concept, and not collection.
-2.2.1* Technical answer: a typed interface 
-** An object on which one can define operations
-** An object that does not hold any data
+* Technical answer: a typed interface 
+    * An object on which one can define operations
+    * An object that does not hold any data
 // this is just a rule, not forced by compliler.
-** An object that should not change the data it processes (multicore, visibility issue, atomic, volatile) 
-** An object able to process data in one pass
-** An object optimized from the algorithm point of view, and able to process data in parallel.
+    * An object that should not change the data a it processes (multicore, visibility issue, atomic, volatile) 
+    * An object able to process data in one pass
+    * An object optimized from the algorithm point of view, and able to process data in parallel.
 
 ```java
 public interface Stream<T> extends BaseStream<T, Stream<T>>{}
 ```
 
-2.2* What does it do?
+2.2 What does it do?
 It gives ways to efficiently process large amounts of data... and also smaller ones.
 
-2.3* How efficient?
-** In parallel, to leverage the computing power of multi-core CPUs.
-** Pipelined, to avoid unnecessary intermediary computations.
+2.3 How efficient?
+    * In parallel, to leverage the computing power of multi-core CPUs.
+    * Pipelined, to avoid unnecessary intermediary computations.
 
-2.4* Why can't a Collection be a Stream?
+2.4 Why can't a Collection be a Stream?
 Because Stream is a new concept, and we don't want to change the way the Collection API works.
 
 * Build a Stream (many patterns)
-** forEach operation: return type is void
-** Chain consumer is the only way to have several consumers on a single stream, because forEach method does not return anything.
+    * forEach operation: return type is void
+    * Chain consumer is the only way to have several consumers on a single stream, because forEach method does not return anything.
 
 ```java
 List<Person> persons;
@@ -146,8 +146,8 @@ stream.forEach(c1);
 stream.forEach(c2);
 ```
 
-** Filter operation: return type is Stream
-** Warning: method calls do not handle priorities
+    * Filter operation: return type is Stream
+    * Warning: method calls do not handle priorities
 
 ```java
 List<Person> persons;
@@ -181,8 +181,8 @@ stream2.forEach(System.out::println);
 ```
 
 * what do I have in this new Stream?
-** ~~the filtered data~~
-** Right answer: nothing, since a Stream does not hold any data
+    * the filtered data?
+    * Right answer: nothing, since a Stream does not hold any data
 
 ```java
 // this code does nothing but a declaration, no data is processed. 
@@ -191,9 +191,9 @@ Stream<Person> stream = persons.stream();
 Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
 ```
 
-** The call to the filter method is lazy. forEach method is not lazy.
-** All the methods of Stream that return another Stream are lazy. 
-   An operation on a Stream that returns a Stream is called an intermediary operation.
+    * The call to the filter method is lazy. forEach method is not lazy.
+    * All the methods of Stream that return another Stream are lazy. 
+    * An operation on a Stream that returns a Stream is called an intermediary operation.
 
 ```java
 // this code also does nothing, print nothing, and result is empty
@@ -226,19 +226,42 @@ public interface Function<T,R>{
 <R> Stream<R> map(Function<T, R> mapper);
 ```
 
-** If the flatMap was a regular map, it would return a Stream<Stream<R>>, thus a stream of streams. But it is a flatMap,
-   so the stream of streams is flattened, and becomes a stream.
+    * If the flatMap was a regular map, it would return a Stream<Stream<R>>, thus a stream of streams. But it is a flatMap, so the stream of streams is flattened, and becomes a stream.
 
 
 * Summary
-** The Stream API defines intermediary operations
-** 3 operations:
+    * The Stream API defines intermediary operations, 3 operations:
 **void forEach(Consumer)**: not lazy
 **Stream peek(Consumer)**: lazy
 **Stream filter(Predicate)**:lazy
 **map() and flatMap()**: lazy
 
 
+FlatMap vs Map
+
+```
+flatMap = map + flatten
+
+Define a function g, which returns a list of 3 elements
+scala> def g(v:Int) = List(v-1, v, v+1)
+
+Create a list of 3 elements
+scala> var list = List(1,2,3)  
+
+function g is applied to each element of the list using flatMap
+scala> list.flatMap(x => g(x))    
+res1: List[Int] = List(0,1,2,1,2,3,2,3,4)    
+
+function g is applied to each element of the list using map  
+scala> list.map(x => g(x))    
+res2: List[List[Int]]] = List(List(0, 1, 2), List(1, 2, 3), List(2, 3, 4))    
+
+function g is applied to each element of the list using map and the flatten
+scala> list.map(x => g(x)).flatten    
+res3: List[Int] = List(0,1,2,1,2,3,2,3,4)
+
+result of flatMap = result of map + flatten 
+```
 
 
 * Reduction
