@@ -1,20 +1,18 @@
-Sarah 15
-
-Philip 21
-Beth 23 
-Simon 24
-Nina 23
-Allan 28
-Leonard 18
-Barbara 26
-Penelope 18
-Albert 31 
-Lucy 42
-Charles 26
-Ella 24
-Louis 32
-Liza 17
-Franck 18
-Amy 26
-#Nathan 33
-Na'than 34$
+Sarah 15 180 black
+Philip 21 180 black
+Beth 23  180 black
+Simon 24 180 black
+Nina 23 180 black
+Allan 28 180 black
+Leonard 18 180 black
+Barbara 26 180 black
+Penelope 18 180 black
+Albert 31  180 black
+Lucy 42 180 black
+Charles 26 180 black
+Ella 24 180 black
+Louis 32 180 black
+Liza 17 180 black
+Franck 18 180 black
+Amy 26 180 black
+#Nathan 33 180 black

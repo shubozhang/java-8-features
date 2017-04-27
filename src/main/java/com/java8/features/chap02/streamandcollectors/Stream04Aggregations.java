@@ -26,15 +26,15 @@ public class Stream04Aggregations {
 
         Stream<Integer> stream1 = Stream.empty();
         int red1 = stream1.reduce(id, sum);
-        System.out.println(red1);
+        System.out.println("red1 is " + red1);
 
         Stream<Integer> stream2 = Stream.of(10);
         int red2 = stream2.reduce(id, sum);
-        System.out.println(red2);
+        System.out.println("red2 is " + red2);
 
         Stream<Integer> stream3 = Stream.of(10,9,8,7);
         int red3 = stream3.reduce(id, sum);
-        System.out.println(red3);
+        System.out.println("red3 is " + red3);
     }
 
     /* No identity element for the max reduction operation
@@ -49,7 +49,7 @@ public class Stream04Aggregations {
         Stream<Integer> stream = ages.stream();
 
         Optional<Integer> max = stream.max(Comparator.naturalOrder());
-        System.out.println(max.get());
+        System.out.println("max of stream is " + max.get());
 
     }
 

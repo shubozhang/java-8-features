@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+
+// terminal operation
 public class Stream07Reduction {
 
     public static void main(String[] args) {

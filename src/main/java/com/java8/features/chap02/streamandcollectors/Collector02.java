@@ -49,20 +49,20 @@ public class Collector02 {
         Optional<Person> opt = persons.stream()
                                       .filter(p -> p.getAge() >= 20)
                                       .min(Comparator.comparing(Person::getAge));
-        System.out.println(opt);
+        System.out.println("demo1:  "+ opt);
     }
 
     private static void demo2(List<Person> persons) {
 
         Optional<Person> opt1 = persons.stream().min(Comparator.comparing(Person::getAge));
         Optional<Person> opt2 = persons.stream().max(Comparator.comparing(Person::getAge));
-        System.out.println("min age is " + opt1 + " and max age is " + opt2);
+        System.out.println("demo2: min age is " + opt1 + " and max age is " + opt2);
 
 
 
         Stream<Person> stream2 = persons.stream();
         Optional<Person> opt3 = stream2.min(Comparator.comparing(Person::getAge));
-        System.out.println("min age is " + opt3);
+        System.out.println("demo2: min age is " + opt3);
 
         /*
         * The following implementation will throw exception: Once stream has already been operated upon or closed,
@@ -76,10 +76,9 @@ public class Collector02 {
     private static void demo3(List<Person> persons) {
 
         Map<Integer, Long> map1 =persons.stream()
-                                        .collect(
-                                                Collectors.groupingBy(Person::getAge, Collectors.counting()));
+                                        .collect(Collectors.groupingBy(Person::getAge, Collectors.counting()));
 
-        System.out.println(map1);
+        System.out.println("demo3: " + map1);
 
 
         Map<Integer, String> map2 =persons.stream()
@@ -88,7 +87,7 @@ public class Collector02 {
                                                             Collectors.mapping(Person::getName, Collectors.joining(", "))
                                                     )
                                             );
-        System.out.println(map2);
+        System.out.println("demo3: " + map2);
 
     }
 }

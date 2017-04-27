@@ -22,15 +22,15 @@ public class Stream02 {
 
         stream1.peek(System.out::println).filter(p1.or(p2)).peek(list1::add);
 
-        System.out.println("Intermediary stream is Done");
+        System.out.println("filter and peek are intermediary operations, so no implementation (size of list is 0)");
         System.out.println("size of list = " + list1.size());
 
 
         List<String> list2 = new ArrayList<>();
 
+        System.out.println("forEach is a terminate operation, so size of list is 2");
         stream2.filter(p1.or(p2)).peek(list2::add).forEach(System.out::println);
 
-        System.out.println("final stream is Done");
         System.out.println("size of list = " + list2.size());
     }
 }

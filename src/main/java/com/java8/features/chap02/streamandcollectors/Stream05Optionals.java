@@ -17,34 +17,38 @@ public class Stream05Optionals {
 
 
     public static void main(String[] args) {
-        optional01();
+        optional01("test1");
+        optional01(null);
 
-        optional02();
+        optional02("test2");
+        optional02(null);
 
-        optional03();
+        optional03("test3");
+        optional03(null);
+
     }
 
-    public static void optional01() {
-        Optional<String> stringOptional = Optional.of("test");
+    public static void optional01(String s) {
+        Optional<String> stringOptional = Optional.ofNullable(s);
         String str;
         if (stringOptional.isPresent()) {
             str = stringOptional.get();
         } else {
-            str = "";
+            str = "<String is null>";
         }
         System.out.println(str);
     }
 
 
-    public static void optional02() {
-        Optional<String> stringOptional = Optional.of("test");
-        String str = stringOptional.orElse("");
+    public static void optional02(String s) {
+        Optional<String> stringOptional = Optional.ofNullable(s);
+        String str = stringOptional.orElse("<String is null>");
         System.out.println(str);
     }
 
 
-    public static void optional03() {
-        Optional<String> stringOptional = Optional.of("test");
+    public static void optional03(String s) {
+        Optional<String> stringOptional = Optional.ofNullable(s);
         String str = stringOptional.orElseThrow(NullPointerException::new);
         System.out.println(str);
     }

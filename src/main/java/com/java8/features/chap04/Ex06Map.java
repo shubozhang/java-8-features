@@ -23,7 +23,7 @@ public class Ex06Map {
 
         Map<String,Person> map = new HashMap<>();
 
-        Person defaultPerson = new Person("dummy", 0);
+        Person defaultPerson = new Person("dummy", 0,180,"black");
 
         // JDK 8: returns the default value passed as a parameter if there is no value in the map
         Person p = map.getOrDefault("key",defaultPerson);
