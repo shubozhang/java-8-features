@@ -5,10 +5,11 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
- * Created by shubo.zhang on 6/24/2016.
+ * Created by shubo.zhang
  */
 public class Date09Java8VSJava7 {
 
@@ -16,6 +17,10 @@ public class Date09Java8VSJava7 {
         demo1();
 
         demo2();
+
+       // demo3();
+
+        //demo4();
     }
 
 
@@ -26,6 +31,9 @@ public class Date09Java8VSJava7 {
 
         Date date = Date.from(instant); // API -> legacy
         Instant instant1 = date.toInstant(); // legacy -> new API
+
+        System.out.println("Demo1: " + date);
+        System.out.println("Demo1: " + instant1);
     }
 
     // Instant vs TimeStamp
@@ -34,13 +42,19 @@ public class Date09Java8VSJava7 {
 
         Timestamp timestamp = Timestamp.from(instant); // API -> legacy
         Instant instant1 = timestamp.toInstant(); // legacy -> new API
+
+        System.out.println("Demo2: " + timestamp);
+        System.out.println("Demo2: " + instant1);
     }
 
     private static void demo3() {
-        LocalDate localDate = LocalDate.now();
-        Date date = Date.from(Instant.from(localDate));
+        LocalDate localDate = LocalDate.from(new Date().toInstant().atZone(ZoneId.of("UTC")));
 
+        Date date = Date.from(Instant.from(localDate));
         LocalDate localDate1 = LocalDate.from(date.toInstant());
+
+        System.out.println("Demo3: " + date);
+        System.out.println("Demo3: " + localDate1);
     }
 
     private static void demo4() {
@@ -48,6 +62,9 @@ public class Date09Java8VSJava7 {
 
         Time time = (Time) Time.from(Instant.from(localTime));
         LocalTime localTime1 = time.toLocalTime();
+
+        System.out.println("Demo4: " + time);
+        System.out.println("Demo4: " + localTime1);
     }
 
 }

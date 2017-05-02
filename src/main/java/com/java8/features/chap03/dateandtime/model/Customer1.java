@@ -16,6 +16,7 @@ public class Customer1 {
         return new Date(this.createdDate.getTime());
     }
 
+    // Do not provide setter or set it to private
     private void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }

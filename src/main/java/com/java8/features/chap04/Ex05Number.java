@@ -2,6 +2,7 @@ package com.java8.features.chap04;
 
 
 import java.util.function.BinaryOperator;
+import java.util.stream.Stream;
 
 /*
 * sum /max/min
@@ -13,6 +14,8 @@ public class Ex05Number {
         demo1();
 
         demo2();
+
+        demo3();
     }
 
     private static void demo1() {
@@ -36,5 +39,14 @@ public class Ex05Number {
         long longNum1 = 123454566999999999L;
         int hash1 = Long.hashCode(longNum1);
         System.out.println(hash1);
+    }
+
+    private static void demo3() {
+        BinaryOperator<String> stringJointer = (s1, s2) -> s1 + s2;
+
+        Stream<String> stringStream = Stream.of("hello","-","world");
+        String empty = "";
+        String result = stringStream.reduce(empty,stringJointer);
+        System.out.println(result);
     }
 }

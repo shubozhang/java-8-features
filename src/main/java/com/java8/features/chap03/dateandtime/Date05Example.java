@@ -5,6 +5,7 @@ import com.java8.features.chap03.dateandtime.model.Person;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
@@ -42,7 +43,8 @@ public class Date05Example {
             System.out.println(ioe);
         }
 
-        LocalDate now = LocalDate.of(2016, Month.MARCH, 12);
+        //LocalDate now = LocalDate.of(2016, Month.MARCH, 12);
+        LocalDate now = LocalDate.now();
 
         persons.stream().forEach(
                 p -> {

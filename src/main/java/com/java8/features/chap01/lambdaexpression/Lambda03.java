@@ -33,8 +33,6 @@ public class Lambda03 {
         List<String> list = Arrays.asList("**","*","****","***");
         Collections.sort(list,comparator);
 
-        for (String s : list) {
-            System.out.println(s);
-        }
+        list.forEach(System.out::println);
     }
 }
