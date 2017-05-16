@@ -1,8 +1,6 @@
 package com.java8.features.chap02.streamandcollectors;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -31,5 +29,7 @@ public class Stream03 {
         //list.stream().map(flatMapper).forEach(System.out::println);
 
         //list.stream().flatMap(flatMapper).forEach(System.out::println);
+
+        Optional<Integer> max = list1.stream().max(Comparator.naturalOrder());
     }
 }
