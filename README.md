@@ -1,10 +1,10 @@
 # Java-8-features
 
 ###Module-01
-#### 1.1 Lambda expression: 
-* To make instances of anonymous classes easier to write and read.
-* Another way to write anonymous classes
-* What is the type of a lambda expression? It is a functional interface which has only one abstract method.
+#### 1.1 What is a Lambda expression for: 
+    * To make instances of anonymous classes easier to write and read.
+    * Another way to write anonymous classes
+    * What is the type of a lambda expression? It is a functional interface which has only one abstract method.
 
 ```java
 //Functional interface examples:
@@ -16,26 +16,32 @@ public interface FileFilter{ boolean accept(File pathname); };
 ```
 Note: methods from Object class don't count.
 
-* @Functional Interface annotation is optional. Compiler can tell that whether the interface is functional or not.
-
-* Can a lambda be put in a variable? Yes. The consequences are a lambda can be taken as a method parameter, 
-  and can be returned by a method.
-* Is a lambda expression an object? No. A lambda expression is created without using new key word. 
-  Exact answer: a lambda is an object without an identity. A lambda expression should not be used as a regular object.
+    * What is the type of a lambda expression?
+    A functional interface which is an interface with only one abstract method. @Functional Interface annotation is optional. Compiler can tell that whether the interface is functional or not.
+    
+    * Can a lambda be put in a variable? 
+    Yes. The consequences are a lambda can be taken as a method parameter, and can be returned by a method.
+    
+    * Is a lambda expression an object? 
+    No. A lambda expression is created without using new key word. Exact answer: a lambda is an object without an identity. A lambda expression should not be used as a regular object.
 
 #### 1.2. Functional interfaces toolbox
 ```java
 new package: java.util.function // with a rich set of functional interfaces
 
 //4 categories:
+// 1) Supplier: NO input argument but returns a result. NOTE: This may return different values when it is being called more than once.
 public interface Supplier<T>{ T get(); };
 
+//2) Consumer / BiConsumer: an operation that accepts one or two input arguments and returns no result
 public interface Consumer<T> { void accept(T t); };
 public interface BiConsumer<T, U>{ void accept(T t, U u); };
 
+//3) Predicate / BiPredicate
 public interface Predicate<T> { boolean test(T t);};
 public interface BiPredicate<T, U> { boolean test(T t, U u);};
 
+//4) Function / BiFunction and Function / UnaryOperator
 public interface Function<T,R>{ R apply(T t);};
 public interface BiFunction<T,U,R> { R apply(T t, U u); }
 public interface UnaryOperator<T> extends Function<T,T>{}
@@ -43,15 +49,12 @@ public interface BinaryOperator<T> extends BiFunction<T,T,T>{}
 ```
 
 #### 1.3 Method references
-
+    * ``"::"`` can be used to refer both **non-static and static** methods
 ```java
-"::" can be used to refer both non-static and static methods
 Consumer<String> c = s -> System.out.println(s);
-
 Consumer<String> c = System.out::println;
 
 Comparator<Integer> c = (i1, i2) -> Integer.compare(i1,i2);
-
 Comparator<Integer> c = Integer::compare;
 ```
 

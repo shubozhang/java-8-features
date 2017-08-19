@@ -5,8 +5,15 @@ import java.io.FileFilter;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+
+/*
+* What Is a Lambda Expression for?
+1. To make instances of anonymous classes easier to write and read!
+2. another way of writing instances of anonymous classes
+* */
 public class Lambda01 {
 
+    // 1. Anonymous function
     static FileFilter fileFilter = new FileFilter() {
         @Override
         public boolean accept(File file) {
@@ -14,6 +21,7 @@ public class Lambda01 {
         }
     };
 
+    // 2. lambda expression
     static FileFilter fileFilterLambda = (File file) -> file.getName().endsWith(".txt");
 
     public static void main(String[] args) {

@@ -12,3 +12,4 @@ src/main/resources/access_log_Jul95
 *.jar
 *.war
 *.ear
+out/

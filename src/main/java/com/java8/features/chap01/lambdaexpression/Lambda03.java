@@ -20,6 +20,8 @@ public class Lambda03 {
     // Most of the time, parameter types can be omitted
     static Comparator<String> comparatorLambda1 = (s1, s2) -> Integer.compare(s1.length(), s2.length());
 
+    static Comparator<String> comparatorLambda2 = Comparator.comparing(String :: length);
+
     public static void main(String[] args) {
         runComparator(comparator);
 
@@ -27,12 +29,15 @@ public class Lambda03 {
 
         runComparator(comparatorLambda1);
 
+        runComparator(comparatorLambda2);
+
     }
 
     public static void runComparator(Comparator comparator) {
         List<String> list = Arrays.asList("**","*","****","***");
         Collections.sort(list,comparator);
-
+        System.out.println("starting");
         list.forEach(System.out::println);
+        System.out.println("ending");
     }
 }
