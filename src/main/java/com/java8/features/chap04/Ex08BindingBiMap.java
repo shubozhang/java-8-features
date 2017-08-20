@@ -34,6 +34,10 @@ public class Ex08BindingBiMap {
             System.out.println(ioe);
         }
 
+        example(persons);
+    }
+
+    private static void example(List<Person> persons) {
         Map<Integer,List<Person>> map = persons.stream()
                 .collect(Collectors.groupingBy(Person::getAge));
 
@@ -44,7 +48,7 @@ public class Ex08BindingBiMap {
 
         persons.forEach(
                 person -> bimap.computeIfAbsent(person.getAge(),HashMap::new)
-                        .merge(person.getGender(), new ArrayList<>(Arrays.asList(person)),(l1,l2) -> {
+                        .merge(person.getGender(), new ArrayList<>(Arrays.asList(person)),(l1, l2) -> {
                             l1.addAll(l2);
                             return l1;
                         })

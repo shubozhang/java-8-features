@@ -13,7 +13,7 @@ public class Date01Java7 {
         demo2();
     }
 
-    // Date is mutable
+    // In Java 7, Date object is mutable
     private static void demo1() {
         Customer customer = new Customer();
         Date date = customer.getCreatedDate();

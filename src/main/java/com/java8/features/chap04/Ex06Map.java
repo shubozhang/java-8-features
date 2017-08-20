@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
-* Method: forEach  takes a BiComsumer as a parameter
+* Method: forEach  takes a BiConsumer as a parameter
 *
 * get(): in JDK8, key can be null
 *

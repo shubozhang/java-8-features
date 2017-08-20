@@ -18,9 +18,9 @@ public class Date09Java8VSJava7 {
 
         demo2();
 
-       // demo3();
+/*        demo3();
 
-        //demo4();
+        demo4();*/
     }
 
 

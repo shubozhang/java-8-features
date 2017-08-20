@@ -5,11 +5,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /*
-* stream() / parallelStream()
+* 1. stream() / parallelStream()
 *
-* spliterator()
+* 2. spliterator()
 *
-* forEach()
+* 3. forEach()
 * */
 public class Ex03Collection {
 
@@ -26,11 +26,14 @@ public class Ex03Collection {
 
     // Not for arrays
     private static void demo1() {
+        System.out.println("demo 1: ========================");
+
         List<String> strings = Arrays.asList("One","Two","Three");
         strings.forEach(System.out::println);
 
         Collection<String> list = new ArrayList<>(strings);
         boolean b = list.removeIf(s -> s.length() > 4);
+
         System.out.println(b);
         System.out.println(list.stream().collect(Collectors.joining(",")));
 
@@ -42,6 +45,7 @@ public class Ex03Collection {
 
         // does not return anything
         list.replaceAll(String::toUpperCase);
+        System.out.println("demo 2: ===============================");
         System.out.println(list.stream().collect(Collectors.joining(",")));
     }
 
@@ -51,6 +55,7 @@ public class Ex03Collection {
 
         // does not return anything
         list.sort(Comparator.naturalOrder());
+        System.out.println("demo 3: ================================");
         System.out.println(list.stream().collect(Collectors.joining(",")));
     }
 }

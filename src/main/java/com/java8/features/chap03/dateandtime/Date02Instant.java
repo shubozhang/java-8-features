@@ -4,9 +4,9 @@ import java.time.Duration;
 import java.time.Instant;
 
 /*
-* Instant is a point on the time line. Precision is the nanosecond.
+* 1. Instant is a point on the time line. Precision is the nanosecond.
 *
-* Instant is immutable.
+* 2. Instant is immutable.
 * */
 public class Date02Instant {
 

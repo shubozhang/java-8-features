@@ -4,9 +4,9 @@ import java.time.Duration;
 import java.time.Instant;
 
 /**
- * Duration is the amount of time between two Instant
+ * 1. Duration is the amount of time between two Instant
  *
- * Methods: toNanos(), toMillis(), toSeconds(), toMinutes(), toHours, toDays(), minusNanos(), plusNanos(),
+ * 2. Methods: toNanos(), toMillis(), toSeconds(), toMinutes(), toHours, toDays(), minusNanos(), plusNanos(),
  *          multipliedBy(), dividedBy(), negated(), isZero(), isNegative();
  */
 public class Date03Duration {

@@ -6,9 +6,9 @@ import java.time.Period;
 import java.time.temporal.ChronoUnit;
 
 /**
- * LocalDate is in date precision and immutable
+ * 1. LocalDate is in date precision and immutable
  *
- * Period is the amount of time between LocalDate
+ * 2. Period is the amount of time between LocalDate
  */
 public class Date04LocalDate {
 

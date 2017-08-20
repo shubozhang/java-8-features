@@ -6,9 +6,9 @@ import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 /**
- * Useful to add (or subtract) an amount of time to an Instant of a LocalDate
+ * 1. seful to add (or subtract) an amount of time to an Instant of a LocalDate
  *
- * Methods: firstDayOfMonth(), lastDayOfMonth()
+ * 2. Methods: firstDayOfMonth(), lastDayOfMonth()
  *          firstDayOfYear(), lastDayOfYear()
  *          firstDayOfNextMonth(), firstDayOfNextYear()
  */

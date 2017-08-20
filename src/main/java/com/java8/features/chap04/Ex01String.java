@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Created by shubo.zhang
+ * StringJoiner
  */
 public class Ex01String {
 

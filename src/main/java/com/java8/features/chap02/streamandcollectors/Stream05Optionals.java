@@ -28,6 +28,7 @@ public class Stream05Optionals {
 
     }
 
+    // example 01
     public static void optional01(String s) {
         Optional<String> stringOptional = Optional.ofNullable(s);
         String str;
@@ -40,6 +41,7 @@ public class Stream05Optionals {
     }
 
 
+    // example 02
     public static void optional02(String s) {
         Optional<String> stringOptional = Optional.ofNullable(s);
         String str = stringOptional.orElse("<String is null>");
@@ -47,6 +49,7 @@ public class Stream05Optionals {
     }
 
 
+    // example 03
     public static void optional03(String s) {
         Optional<String> stringOptional = Optional.ofNullable(s);
         String str = stringOptional.orElseThrow(NullPointerException::new);
