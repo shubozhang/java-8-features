@@ -1,7 +1,7 @@
 package com.java8.features.chap01.lambdaexpression;
 
+import com.java8.features.util.Student;
 import com.java8.features.util.SunPower;
-
 import java.util.Objects;
 import java.util.function.Supplier;
 
@@ -11,6 +11,7 @@ public class Lambda04Supplier {
         example01();
         example02();
         example03();
+        example04();
     }
 
     // 1. how to use Supplier
@@ -33,7 +34,6 @@ public class Lambda04Supplier {
     }
 
     // 3. how to use Constructor as method reference for Supplier.
-
     private static void example03() {
         System.out.println(maker(Employee::new));
     }
@@ -47,4 +47,18 @@ public class Lambda04Supplier {
             return "A EMPLOYEE";
         }
     }
+
+    //4. how to assign user defined function to Supplier with method reference.
+    private static void example04() {
+        Supplier<Student> studentGenerator = Lambda04Supplier::employeeMaker;
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("#" + i + ": " + studentGenerator.get());
+        }
+    }
+
+    public static Student employeeMaker() {
+        return new Student("A",2);
+    }
+
 }

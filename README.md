@@ -37,15 +37,17 @@ public interface Supplier<T>{ T get(); };
 public interface Consumer<T> { void accept(T t); };
 public interface BiConsumer<T, U>{ void accept(T t, U u); };
 
-//3) Predicate / BiPredicate
+//3) Predicate / BiPredicate: Represents a predicate (boolean-valued function) of one argument.
 public interface Predicate<T> { boolean test(T t);};
 public interface BiPredicate<T, U> { boolean test(T t, U u);};
 
-//4) Function / BiFunction and Function / UnaryOperator
+//4) Function / BiFunction : Represents a function that accepts one argument and produces a result.
 public interface Function<T,R>{ R apply(T t);};
 public interface BiFunction<T,U,R> { R apply(T t, U u); }
-public interface UnaryOperator<T> extends Function<T,T>{}
-public interface BinaryOperator<T> extends BiFunction<T,T,T>{}
+
+// BinaryOperator / UnaryOperatorRepresents an operation on a single operand that produces a result of the same type as its operand. This is a specialization of Function for the case where the operand and result are of the same type.
+public interface UnaryOperator<T> extends Function<T,R>{}
+public interface BinaryOperator<T> extends BiFunction<T,U,R>{}
 ```
 
 #### 1.3 Method references
