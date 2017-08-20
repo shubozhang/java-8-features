@@ -93,11 +93,11 @@ Predicate<String> p2 = s -> s.length() > 10;
 Predicate<String> id = Predicate.isEqual(target);
 ```
 
-### Module02 Streams and Collectors
-* Map / filter /reduce
-* what is a Stream?
-* Patterns to build a Stream
-* Operations on a Stream
+### Module-02 Streams and Collectors
+    * Map / filter /reduce
+    * what is a Stream?
+    * Patterns to build a Stream
+    * Operations on a Stream
 
 
 #### 2.1.Map /Filter /Reduce
@@ -129,8 +129,8 @@ public interface Stream<T> extends BaseStream<T, Stream<T>>{}
 It gives ways to efficiently process large amounts of data... and also smaller ones.
 
 2.3 How efficient?
-       * In parallel, to leverage the computing power of multi-core CPUs.
-       * Pipelined, to avoid unnecessary intermediary computations.
+    * In parallel, to leverage the computing power of multi-core CPUs.
+    * Pipelined, to avoid unnecessary intermediary computations.
 
 2.4 Why can't a Collection be a Stream?
 Because Stream is a new concept, and we don't want to change the way the Collection API works.
