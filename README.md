@@ -17,20 +17,23 @@ public interface FileFilter{ boolean accept(File pathname); };
 Note: methods from Object class don't count.
 
     * What is the type of a lambda expression?
-    A functional interface which is an interface with only one abstract method. @Functional Interface annotation is optional. Compiler can tell that whether the interface is functional or not.
+    A functional interface which is an interface with only one abstract method. @Functional Interface annotation is optional. 
+    Compiler can tell that whether the interface is functional or not.
     
     * Can a lambda be put in a variable? 
     Yes. The consequences are a lambda can be taken as a method parameter, and can be returned by a method.
     
     * Is a lambda expression an object? 
-    No. A lambda expression is created without using new key word. Exact answer: a lambda is an object without an identity. A lambda expression should not be used as a regular object.
+    No. A lambda expression is created without using new key word. Exact answer: a lambda is an object without an identity. 
+    A lambda expression should not be used as a regular object.
 
 #### 1.2. Functional interfaces toolbox
 ```java
 new package: java.util.function // with a rich set of functional interfaces
 
 //4 categories:
-// 1) Supplier: NO input argument but returns a result. NOTE: This may return different values when it is being called more than once.
+// 1) Supplier: NO input argument but returns a result. 
+// NOTE: This may return different values when it is being called more than once.
 public interface Supplier<T>{ T get(); };
 
 //2) Consumer / BiConsumer: an operation that accepts one or two input arguments and returns no result
@@ -45,7 +48,8 @@ public interface BiPredicate<T, U> { boolean test(T t, U u);};
 public interface Function<T,R>{ R apply(T t);};
 public interface BiFunction<T,U,R> { R apply(T t, U u); }
 
-// BinaryOperator / UnaryOperatorRepresents an operation on a single operand that produces a result of the same type as its operand. This is a specialization of Function for the case where the operand and result are of the same type.
+// BinaryOperator / UnaryOperatorRepresents an operation on a single operand that produces a result of the same type as its operand. 
+// This is a specialization of Function for the case where the operand and result are of the same type.
 public interface UnaryOperator<T> extends Function<T,R>{}
 public interface BinaryOperator<T> extends BiFunction<T,U,R>{}
 ```
