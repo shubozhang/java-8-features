@@ -2,61 +2,78 @@
 
 ### Module-01
 #### 1.1 What is a Lambda expression for: 
-    * To make instances of anonymous classes easier to write and read.
-    * Another way to write anonymous classes
-    * What is the type of a lambda expression? It is a functional interface which has only one abstract method.
 
-```java
-//Functional interface examples:
-public interface Runnable{ run(); };
+   * To make instances of anonymous classes easier to write and read.
+   * Another way to write anonymous classes
+   * What is the type of a lambda expression? It is a functional interface which has only one abstract method.
 
+Functional interface examples:
+```
+public interface Runnable{ run(); }
+```
+
+```
 public interface Comparator<T>{ int compare(T t1, T, t2); };
+```
 
+```
 public interface FileFilter{ boolean accept(File pathname); };
 ```
 Note: methods from Object class don't count.
 
-    * What is the type of a lambda expression?
+   * What is the type of a lambda expression?
     A functional interface which is an interface with only one abstract method. @Functional Interface annotation is optional. 
     Compiler can tell that whether the interface is functional or not.
     
-    * Can a lambda be put in a variable? 
+   * Can a lambda be put in a variable? 
     Yes. The consequences are a lambda can be taken as a method parameter, and can be returned by a method.
     
-    * Is a lambda expression an object? 
+   * Is a lambda expression an object? 
     No. A lambda expression is created without using new key word. Exact answer: a lambda is an object without an identity. 
     A lambda expression should not be used as a regular object.
 
 #### 1.2. Functional interfaces toolbox
-```java
+```
 new package: java.util.function // with a rich set of functional interfaces
+```
 
-//4 categories:
-//1) Supplier: NO input argument but returns a result. 
+4 categories:
+
+//1) Supplier: NO input argument but returns a result.  
 // NOTE: This may return different values when it is being called more than once.
+```
 public interface Supplier<T>{ T get(); };
+```
+
 
 //2) Consumer / BiConsumer: an operation that accepts one or two input arguments and returns no result
+```
 public interface Consumer<T> { void accept(T t); };
 public interface BiConsumer<T, U>{ void accept(T t, U u); };
+```
 
 //3) Predicate / BiPredicate: Represents a predicate (boolean-valued function) of one argument.
+```
 public interface Predicate<T> { boolean test(T t);};
 public interface BiPredicate<T, U> { boolean test(T t, U u);};
+```
 
 //4) Function / BiFunction : Represents a function that accepts one argument and produces a result.
+```
 public interface Function<T,R>{ R apply(T t);};
 public interface BiFunction<T,U,R> { R apply(T t, U u); }
+```
 
 //BinaryOperator / UnaryOperatorRepresents an operation on a single operand that produces a result of the same type as its operand. 
 //This is a specialization of Function for the case where the operand and result are of the same type.
+```
 public interface UnaryOperator<T> extends Function<T,R>{}
 public interface BinaryOperator<T> extends BiFunction<T,U,R>{}
 ```
 
 #### 1.3 Method references
-    * ``"::"`` can be used to refer both **non-static and static** methods
-```java
+   * ``"::"`` can be used to refer both **non-static and static** methods
+```
 Consumer<String> c = s -> System.out.println(s);
 Consumer<String> c = System.out::println;
 
@@ -69,12 +86,16 @@ Comparator<Integer> c = Integer::compare;
 
 * Process data with lambdas
 
-```java
+```
 List<Customer> list
 list.forEach(customer -> System.out.println(customer));
+```
 or 
+```
 list.forEach(System.out::println);
+```
 
+```
 // default key word is a new concept in java 8. 
 // It allows to change the old interfaces without breaking the existing implementations.
 // It also allows new patterns.
@@ -90,7 +111,7 @@ public interface Iterable<E> {
 
 * Examples of new patterns
 
-```java
+```
 Predicate<String> p1 = s -> s.length() < 20;
 Predicate<String> p2 = s -> s.length() > 10;
 
@@ -98,10 +119,10 @@ Predicate<String> id = Predicate.isEqual(target);
 ```
 
 ### Module-02 Streams and Collectors
-    * Map / filter /reduce
-    * what is a Stream?
-    * Patterns to build a Stream
-    * Operations on a Stream
+   * Map / filter /reduce
+   * what is a Stream?
+   * Patterns to build a Stream
+   * Operations on a Stream
 
 
 #### 2.1.Map /Filter /Reduce
@@ -119,8 +140,7 @@ Predicate<String> id = Predicate.isEqual(target);
 #### 2.2 What is a Stream? It is a new concept, and not collection.
 * Technical answer: a typed interface 
     * An object on which one can define operations
-    * An object that does not hold any data
-// this is just a rule, not forced by compliler.
+    * An object that does not hold any data(this is just a rule, not forced by compliler).
     * An object that should not change the data a it processes (multicore, visibility issue, atomic, volatile) 
     * An object able to process data in one pass
     * An object optimized from the algorithm point of view, and able to process data in parallel.
@@ -143,7 +163,7 @@ Because Stream is a new concept, and we don't want to change the way the Collect
     * forEach operation: return type is void
     * Chain consumer is the only way to have several consumers on a single stream, because forEach method does not return anything.
 
-```java
+```
 List<Person> persons;
 Stream<Person> stream = persons.stream();
 stream.forEach(p -> System.out.println(p));
@@ -158,7 +178,7 @@ stream.forEach(c2);
     * Filter operation: return type is Stream
     * Warning: method calls do not handle priorities
 
-```java
+```
 List<Person> persons;
 Stream<Person> stream = persons.stream();
 Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
@@ -193,7 +213,7 @@ stream2.forEach(System.out::println);
     * the filtered data?
     * Right answer: nothing, since a Stream does not hold any data
 
-```java
+``
 // this code does nothing but a declaration, no data is processed. 
 List<Person> persons;
 Stream<Person> stream = persons.stream();
@@ -204,7 +224,7 @@ Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
     * All the methods of Stream that return another Stream are lazy. 
     * An operation on a Stream that returns a Stream is called an intermediary operation.
 
-```java
+```
 // this code also does nothing, print nothing, and result is empty
 List<String> result = new ArrayList<>;
 List<Person> persons;
@@ -230,7 +250,7 @@ public interface Function<T,R>{
 **Stream<Stream<R>> flatMap()**
 ** Signature
 
-```java
+```
 <R> Stream<R> flatMap(Function<T, Stream<R>> flatMapper);
 <R> Stream<R> map(Function<T, R> mapper);
 ```
@@ -277,7 +297,7 @@ result of flatMap = result of map + flatten
     * What about the reduction step?
     * Two kinds of reduction in the Stream API
 
-```java
+```
 // First: aggregation = min, max, sum, etc...
 List<Integer> ages
 Stream<Integer> stream = ages.stream();
@@ -302,7 +322,7 @@ The reduction of an empty Stream is the identity element
 
 If the Stream has only one element, then the reduction is that element.
 
-```java
+```
 // Aggregations example
 Stream<Integer> stream;
 BinaryOperation<Integer> sum = (i1, i2) -> i1 + i2;
@@ -338,10 +358,3 @@ They trigger the processing of the data
 * Collectors
     * Another type of reduction: mutable reduction
     * Instead of aggregating elements, this reduction put them in a container.
-
-
-
-
-
-
-
