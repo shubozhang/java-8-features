@@ -28,8 +28,9 @@ public class Stream07Reduction {
         List<Integer> list1 = Arrays.asList(10, 11, 12);
         List<Integer> list2 = Arrays.asList(-10, -11);
 
+        // First v1 = max(0, -10); Second v2=max(v1,-11); Lastly, maxValue = v2
         Integer red1 = list1.stream().reduce(0, Integer::max);
-        Integer red2 = list2.stream().reduce(0, Integer::max); // First v1 = max(0, -10); Second v2=max(v1,-11); Lastly, maxValue = v2
+        Integer red2 = list2.stream().reduce(0, Integer::max);
 
         System.out.println("demo2 red1 = " + red1 + " and red2 = " + red2);
     }

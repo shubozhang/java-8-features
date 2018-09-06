@@ -18,7 +18,7 @@ public class Ex01String {
     private static void demo1() {
         String s = "Hello World";
         IntStream stream = s.chars();
-        stream.forEach(p -> System.out.println(String.valueOf(p)));
+        stream.forEach(p -> System.out.println("Demo1: " + String.valueOf(p)));
     }
 
     private static void demo2() {

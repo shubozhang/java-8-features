@@ -141,7 +141,7 @@ Predicate<String> id = Predicate.isEqual(target);
 * Technical answer: a typed interface 
     * An object on which one can define operations
     * An object that does not hold any data(this is just a rule, not forced by compliler).
-    * An object that should not change the data a it processes (multicore, visibility issue, atomic, volatile) 
+    * An object that should not change the data in processes (multicore, visibility issue, atomic, volatile) 
     * An object able to process data in one pass
     * An object optimized from the algorithm point of view, and able to process data in parallel.
 
@@ -255,7 +255,8 @@ public interface Function<T,R>{
 <R> Stream<R> map(Function<T, R> mapper);
 ```
 
-    * If the flatMap was a regular map, it would return a Stream<Stream<R>>, thus a stream of streams. But it is a flatMap, so the stream of streams is flattened, and becomes a stream.
+    * If the flatMap was a regular map, it would return a Stream<Stream<R>>, thus a stream of streams. 
+    But it is a flatMap, so the stream of streams is flattened, and becomes a stream.
 
 
 * Summary

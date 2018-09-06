@@ -3,9 +3,8 @@ package com.java8.ch01.lambda;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 
-/**
- * Created by Shubo on 8/19/2017.
- */
+// extended function interface
+// static <T> UnaryOperator<T> identity() { return t -> t;}
 public class Lambda08Operator {
 
     public static void main(String[] args) {
@@ -14,12 +13,14 @@ public class Lambda08Operator {
         example02();
     }
 
+    // UnaryOperator
     private static void example01() {
         UnaryOperator<String> i  = (x)-> x.toUpperCase();
 
         System.out.println(i.apply("java2s.com"));
     }
 
+    // BinaryOperator
     private static void example02() {
         BinaryOperator<Integer> adder = (n1, n2) -> n1 + n2;
 

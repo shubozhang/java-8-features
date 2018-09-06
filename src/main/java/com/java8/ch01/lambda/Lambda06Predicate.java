@@ -1,7 +1,7 @@
 package com.java8.ch01.lambda;
 
-import com.java8.util.Box;
-import com.java8.util.Student;
+import com.java8.ch01.lambda.model.Box;
+import com.java8.ch01.lambda.model.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,9 +9,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-/**
- * Represents a predicate (boolean-valued function) of one argument.
- */
+// Represents a predicate (boolean-valued function) of one argument.
+// boolean test(T t);
 public class Lambda06Predicate {
 
     public static void main(String[] args) {
@@ -26,7 +25,7 @@ public class Lambda06Predicate {
     private static void example01() {
         Predicate<String> i  = (s)-> s.length() > 5;
 
-        System.out.println(i.test("java2s.com "));
+        System.out.println("example01:" + i.test("java2s.com "));
     }
 
     // 2. how to create Predicate from method reference and lambda.

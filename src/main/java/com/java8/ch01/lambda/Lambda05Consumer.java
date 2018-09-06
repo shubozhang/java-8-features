@@ -1,15 +1,15 @@
 package com.java8.ch01.lambda;
 
-import com.java8.util.Student;
+import com.java8.ch01.lambda.model.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
-/**
- * Created by Shubo on 8/19/2017.
- */
+// functional interface Consumer
+// void accept(T t);
+// Consumer<T> andThen(Consumer<? super T> after)
 public class Lambda05Consumer {
 
     public static void main(String[] args) {
@@ -32,6 +32,7 @@ public class Lambda05Consumer {
         testConsumer(consumer2);
         consumer3.accept("John Doe");
         consumer3.accept("Mike Bibby");
+        System.out.println("=================End of example01");
     }
 
 
@@ -45,6 +46,7 @@ public class Lambda05Consumer {
         };
 
         myConsumer.accept(x);
+        System.out.println("=============End of example02");
     }
 
     // 3. how to pass Consumer as parameter.
@@ -54,9 +56,12 @@ public class Lambda05Consumer {
                 new Student("Mark", 4)
         );
 
-        acceptAllEmployee(students, e -> System.out.println(e.name)); // operation: print name
-        acceptAllEmployee(students, e -> {e.gpa *= 1.5;}); // operation: modify gpa
-        acceptAllEmployee(students, e -> System.out.println(e.name + ": " + e.gpa)); // operation: print name and gpa
+        Consumer<Student> cModifyGpa = e -> {e.gpa *= 1.5;};
+        Consumer<Student> cPrintNameAndGpa = e -> System.out.println(e.name + ": " + e.gpa);
+        acceptAllEmployee(students, cPrintNameAndGpa); // operation: print name
+        acceptAllEmployee(students, cModifyGpa); // operation: modify gpa
+        acceptAllEmployee(students, cPrintNameAndGpa); // operation: print name and gpa
+        System.out.println("===============End of example03");
     }
 
     // 4. default method / andThen method

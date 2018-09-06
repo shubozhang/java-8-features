@@ -54,7 +54,7 @@ public class Stream06Terminal {
     }
 
     interface PersonPredicate extends Predicate<Person>{
-        public boolean test(Person person);
+        boolean test(Person person);
     }
 
     static class PersonAgePredicate implements PersonPredicate {

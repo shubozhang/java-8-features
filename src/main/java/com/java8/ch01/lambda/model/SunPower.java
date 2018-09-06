@@ -1,4 +1,4 @@
-package com.java8.util;
+package com.java8.ch01.lambda.model;
 
 public class SunPower {
     public SunPower() {

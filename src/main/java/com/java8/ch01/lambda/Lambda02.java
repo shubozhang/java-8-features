@@ -11,6 +11,7 @@ public class Lambda02 {
         }
     };
 
+    // Use lambda
     static Runnable runnableLambda = ()-> {
         for (int i = 0; i < 3; i++) {
             System.out.println("Hello from " + Thread.currentThread().getName());

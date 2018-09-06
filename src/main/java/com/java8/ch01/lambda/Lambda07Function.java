@@ -3,9 +3,7 @@ package com.java8.ch01.lambda;
 import java.io.File;
 import java.util.function.Function;
 
-/**
- * Created by Shubo on 8/19/2017.
- */
+// Functional interface: Function R apply(T t);
 public class Lambda07Function {
 
     public static void main(String[] args) {
