@@ -69,7 +69,7 @@ public interface BinaryOperator<T> extends BiFunction<T,U,R>{}
 
 #### 1.3 Method references
    * ``"::"`` can be used to refer both **non-static and static** methods
-```
+```java
 Consumer<String> c = s -> System.out.println(s);
 Consumer<String> c = System.out::println;
 
