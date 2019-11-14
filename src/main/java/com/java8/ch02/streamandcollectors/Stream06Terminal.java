@@ -7,6 +7,9 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*
+* Terminal operations: .foreach(), .min(), .max(), .collect()
+* */
 public class Stream06Terminal {
 
     public static void main(String[] args) {

@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
-// functional interface Consumer
+// functional interface Consumer-- accept on arg, void return
 // void accept(T t);
 // Consumer<T> andThen(Consumer<? super T> after)
 public class Lambda05Consumer {

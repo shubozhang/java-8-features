@@ -33,7 +33,7 @@ public class Lambda03 {
 
     }
 
-    public static void runComparator(Comparator comparator) {
+    private static void runComparator(Comparator comparator) {
         List<String> list = Arrays.asList("**","*","****","***");
         Collections.sort(list,comparator);
         System.out.println("starting");

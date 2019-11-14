@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 /**
  * Map and FlatMap operations
  */
-public class Stream03 {
+public class Stream03Map {
 
     public static void main(String[] args) {
         List<Integer> list1 = Arrays.asList(1,2,3,4,5,6,7);
@@ -24,23 +24,27 @@ public class Stream03 {
 
     // Map example
     private static void example01(List<List<Integer>> list) {
-        System.out.println("Map example: ");
+        System.out.println("Example01: ");
         Function<List<?>,Integer> mapper = List::size;
         list.stream().map(l -> l.size()).forEach(System.out::println);
+
+        System.out.println("Example01-using Function mapper: ");
         list.stream().map(mapper).forEach(System.out::println);
     }
 
     // FlatMap example
     private static void example02(List<List<Integer>> list) {
-        System.out.println("FlatMap example: ");
+        System.out.println("Example02 FlatMap: ");
         Function<List<Integer>, Stream<Integer>> flatMapper = l -> l.stream();
         list.stream().map(flatMapper).forEach(System.out::println);
+
+        System.out.println("Example02 FlatMap--user Function flatMapper: ");
         list.stream().flatMap(flatMapper).forEach(System.out::println);
     }
 
 
     private static void example03(List<Integer> list) {
-        System.out.println("Max function example: ");
+        System.out.println("Example03 Max function: ");
         Optional<Integer> max = list.stream().max(Comparator.naturalOrder());
         System.out.println(max.get());
     }

@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  *
  * Only final operation will trigger the implementation.
  */
-public class Stream02 {
+public class Stream02Operations {
 
     public static void main(String[] args) {
         Predicate<String> p1 = Predicate.isEqual("two");

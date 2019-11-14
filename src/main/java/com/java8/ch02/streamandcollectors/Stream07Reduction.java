@@ -5,7 +5,12 @@ import java.util.List;
 import java.util.Optional;
 
 
-// terminal operation
+// Reduction: More specifically, reduction stream operations allow us to produce one single result from
+// a sequence of elements, More specifically, reduction stream operations allow us to produce one single result
+// from a sequence of elements,
+//
+// it is a terminal operation that A reduction is a terminal operation
+// that aggregates a stream into a type or a primitive.
 public class Stream07Reduction {
 
     public static void main(String[] args) {

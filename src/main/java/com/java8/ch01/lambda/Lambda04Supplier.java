@@ -31,7 +31,7 @@ public class Lambda04Supplier {
         System.out.println("Example02: check the same object? " + Objects.equals(p1, p2));
     }
 
-    public static SunPower produce(Supplier<SunPower> supp) {
+    private static SunPower produce(Supplier<SunPower> supp) {
         return supp.get();
     }
 
@@ -59,7 +59,7 @@ public class Lambda04Supplier {
         }
     }
 
-    public static Student employeeMaker() {
+    private static Student employeeMaker() {
         return new Student("A",2);
     }
 
