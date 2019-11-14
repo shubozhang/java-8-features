@@ -18,7 +18,7 @@ public interface FileFilter{ boolean accept(File pathname); };
 Note: methods from Object class don't count.
 
    * What is the type of a lambda expression?
-    A functional interface which is an interface with only one abstract method. @Functional Interface annotation is optional. 
+    A functional interface which is an interface with only one abstract method. `@Functional` Interface annotation is optional. 
     Compiler can tell that whether the interface is functional or not.
     
    * Can a lambda be put in a variable? 
@@ -29,24 +29,23 @@ Note: methods from Object class don't count.
     A lambda expression should not be used as a regular object.
 
 #### 1.2. Functional interfaces toolbox
-```
-new package: java.util.function // with a rich set of functional interfaces
-```
+
+new package: `java.util.function` // with a rich set of functional interfaces
+
 
 4 categories:
 
-//1) Supplier: NO input argument but returns a result.  
+// 1) Supplier: NO input argument but returns a result.  
 // NOTE: This may return different values when it is being called more than once.
-```
-public interface Supplier<T>{ T get(); };
-```
+
+`public interface Supplier<T>{ T get(); };`
 
 
 //2) Consumer / BiConsumer: an operation that accepts one or two input arguments and returns no result
-```
-public interface Consumer<T> { void accept(T t); };
-public interface BiConsumer<T, U>{ void accept(T t, U u); };
-```
+
+`public interface Consumer<T> { void accept(T t); };`
+
+`public interface BiConsumer<T, U>{ void accept(T t, U u); };`
 
 //3) Predicate / BiPredicate: Represents a predicate (boolean-valued function) of one argument.
 ```
@@ -79,7 +78,6 @@ Comparator<Integer> c = Integer::compare;
 
 #### 1.4 Process data in Java
 * Where are out objects? Most of the time in a Collection(or maybe a List, a Set or a Map)
-
 * Process data with lambdas
 
 ```
@@ -91,11 +89,13 @@ or
 list.forEach(System.out::println);
 ```
 
+
+* `default` key word is a new concept in java 8. 
+    *  It allows to change the old interfaces without breaking the existing implementations.
+    *  It also allows new patterns.
+    *  Static methods are also allowed in java 8 interfaces.
+
 ```
-// default key word is a new concept in java 8. 
-// It allows to change the old interfaces without breaking the existing implementations.
-// It also allows new patterns.
-// Static methods are also allowed in java 8 interfaces.
 public interface Iterable<E> {
     default void forEach(Consumer<E> consumer) {
         for (E e : this) {
@@ -106,19 +106,17 @@ public interface Iterable<E> {
 ```
 
 * Examples of new patterns
-
 ```
 Predicate<String> p1 = s -> s.length() < 20;
 Predicate<String> p2 = s -> s.length() > 10;
-
 Predicate<String> id = Predicate.isEqual(target);
 ```
 
 ### Module-02 Streams and Collectors
-   * Map / filter /reduce
-   * what is a Stream?
-   * Patterns to build a Stream
-   * Operations on a Stream
+* Map / filter / reduce
+* what is a Stream?
+* Patterns to build a Stream
+* Operations on a Stream
 
 
 #### 2.1.Map /Filter /Reduce
@@ -141,18 +139,16 @@ Predicate<String> id = Predicate.isEqual(target);
     * An object able to process data in one pass
     * An object optimized from the algorithm point of view, and able to process data in parallel.
 
-```java
-public interface Stream<T> extends BaseStream<T, Stream<T>>{}
-```
+`public interface Stream<T> extends BaseStream<T, Stream<T>>{}`
 
-2.2 What does it do?
+* What does it do?
 It gives ways to efficiently process large amounts of data... and also smaller ones.
 
-2.3 How efficient?
+* How efficient?
     * In parallel, to leverage the computing power of multi-core CPUs.
     * Pipelined, to avoid unnecessary intermediary computations.
 
-2.4 Why can't a Collection be a Stream?
+* Why can't a Collection be a Stream?
 Because Stream is a new concept, and we don't want to change the way the Collection API works.
 
 * Build a Stream (many patterns)
@@ -164,22 +160,22 @@ List<Person> persons;
 Stream<Person> stream = persons.stream();
 stream.forEach(p -> System.out.println(p));
 
-or
+// or
 Consumer<T> c1 = p -> System.out.println(p);
 Consumer<T> c2 = System.out::println; // method reference
 stream.forEach(c1);
 stream.forEach(c2);
 ```
 
-    * Filter operation: return type is Stream
-    * Warning: method calls do not handle priorities
+* Filter operation: return type is Stream
+* Warning: method calls do not handle priorities
 
 ```
 List<Person> persons;
 Stream<Person> stream = persons.stream();
 Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
 
-or
+// or
 
 Predicate<Person> p1 = person -> person.getAge() > 20;
 
@@ -215,11 +211,9 @@ List<Person> persons;
 Stream<Person> stream = persons.stream();
 Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
 ```
-
     * The call to the filter method is lazy. forEach method is not lazy.
     * All the methods of Stream that return another Stream are lazy. 
     * An operation on a Stream that returns a Stream is called an intermediary operation.
-
 ```
 // this code also does nothing, print nothing, and result is empty
 List<String> result = new ArrayList<>;
